@@ -14,11 +14,13 @@ class Filter
 {
     public $value;
     public $valid;
+    public $filtered;
     public $required;
     public $fill = null;
     function __construct (array $shema, $value ) 
     {
         $valid = false;
+        $filtered = false;
         $required = $shema["required"] ?? false;
         $message  = $shema["message"] ?? [];
         $fill  = $message["*"] ?? $this->fill;
@@ -30,6 +32,7 @@ class Filter
             }
         }else{
             $filter = $this->mapMethods($shema, $value);
+            $filtered = true;
             if( $filter->valid ){
                 $valid = true;
                 $value = $filter->value;
@@ -40,6 +43,7 @@ class Filter
         
         $this->value = $value;
         $this->valid = $valid;
+        $this->filtered = $filtered;
         $this->required = $required;
     }
     function mapMethods (array $shema, $value)

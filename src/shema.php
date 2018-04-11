@@ -30,10 +30,11 @@ class Shema
             }else{
                 $value = $input[$property] ?? null;
                 $filter = new Filter($shema, $value);
-                if( $filter->valid ){
+                
+                if ( $filter->valid ) {
                     $valid[$property] = $filter->value;
                     $countValid++;
-                }else if( $filter->required ){
+                } else if ( $filter->required || $filter->filtered ) {
                     $invalid[$property] = $filter->value;
                     $countInvalid++;
                 }
