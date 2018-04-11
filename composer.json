@@ -1,0 +1,18 @@
+{
+    "name": "uppercod/aduana",
+    "description": "A small library to clean and filter data safely and easily.",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Matias Trujillo",
+            "email": "mtrujillo@outlook.cl"
+        }
+    ],
+    "require": {},
+    "autoload":{
+        "psr-4": {
+            "Aduana\\" : "src/"
+        }
+    }
+}
